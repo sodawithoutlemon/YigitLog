@@ -1,9 +1,10 @@
 var topic = window.location.search.split("=")[1]
 var firstletter = topic[0].toUpperCase();
 $(".topic").text(firstletter+topic.slice(1,10))
+var key = apikey
 
 function GetData(){
-    var dataurl = "https://sheets.googleapis.com/v4/spreadsheets/1IvTyuL4NnXcuQ8kCzdiVMWzKtC71bjD9u5IXQ6sWtmo/values/"+topic+"/?key="+apikey
+    var dataurl = "https://sheets.googleapis.com/v4/spreadsheets/1IvTyuL4NnXcuQ8kCzdiVMWzKtC71bjD9u5IXQ6sWtmo/values/"+topic+"/?key="+key
     axios.get(dataurl).then(function(response){
         for (var i = 0; i < response.data.values.length; i++){
             if(i > 0) {
