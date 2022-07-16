@@ -6,6 +6,7 @@ var key = apikey
 function GetData(){
     var dataurl = "https://sheets.googleapis.com/v4/spreadsheets/1IvTyuL4NnXcuQ8kCzdiVMWzKtC71bjD9u5IXQ6sWtmo/values/"+topic+"/?key="+key
     axios.get(dataurl).then(function(response){
+        // Alphabetical
         for (var i = 0; i < response.data.values.length; i++){
             if(i > 0) {
                 var name = response.data.values[i][0]
@@ -14,7 +15,7 @@ function GetData(){
                 if (note === undefined){
                     note = " "
                 } 
-                var template = "<tr><td scope='row' class='head'>"+(i)+"</td><td>"+name+"</td><td>"+score+"</td><td>"+note+"</td></tr>"
+                var template = "<tr><td scope='row' class='head'>"+(i)+"</td><td class='tablename'>"+name+"</td><td class='tablescore'>"+score+"</td><td>"+note+"</td></tr>"
                 $("table").find('tbody').append(template);
             }
         }
@@ -22,6 +23,19 @@ function GetData(){
 }
 
 GetData()
+
+if (topic === "anime") {
+    $(".nextlist").attr("href", "data.html?topic=book")
+}
+if (topic === "book") {
+    $(".nextlist").attr("href", "data.html?topic=movie")
+}
+if (topic === "movie") {
+    $(".nextlist").attr("href", "data.html?topic=game")
+}
+if (topic === "game") {
+    $(".nextlist").attr("href", "data.html?topic=anime")
+}
 
 var number = Math.floor(Math.random() * 8) + 1
 var image = "/images/"+number+".jpg"
