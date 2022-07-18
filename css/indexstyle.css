@@ -30,20 +30,12 @@ body {
     min-height: 100vh;
 }
 
-.customheader {
+.levelfourclass {
     background-color: var(--levelfour-color)
 }
 
-.customfooter {
-    background-color: var(--levelfour-color)
-}
-
-.space {
-    background-color: var(--levelthree-color);
-}
-
-.mid {
-    background-color: var(--levelfour-color);
+.levelthreeclass {
+    background-color: var(--levelthree-color)
 }
 
 /*
@@ -69,10 +61,6 @@ h1 {
     height: 100%;
     width: 100%;
     background-color: var(--leveltwo-color);
-}
-
-.plate {
-    background-color: var(--levelfour-color);
 }
 
 .info-plate-c {

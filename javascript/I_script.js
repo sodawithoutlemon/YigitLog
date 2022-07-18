@@ -11,6 +11,6 @@ if (window.innerWidth <= 720) {
     $(".phone-second").html("<a href='data.html?topic=anime-alphabetical'><div class='butdivside'><button type='button' class='btn btn-outline-light btn-lg first'><h5>Anime</h5></button></div></a><a href='data.html?topic=book-alphabetical'><div class='butdivside'><button type='button' class='btn btn-outline-light btn-lg second'><h5>Book</h5></button></div></a>")
     $(".phone-middle").html("<div class='midinfo'><h1>YigitLog</h1></div>")
     $(".phone-fourth").html("<a href='data.html?topic=movie-alphabetical'><div class='butdivside'><button type='button' class='btn btn-outline-light btn-lg fifth'><h5>Movie</h5></button></div></a><a href='data.html?topic=game-alphabetical'><div class='butdivside'><button type='button' class='btn btn-outline-light btn-lg sixth'><h5>Game</h5></button></div></a>")
-e
+
 }
 $(window).resize(function(){location.reload();})
