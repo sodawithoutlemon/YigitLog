@@ -50,31 +50,96 @@ body {
     mid-inside
 */
 
+h1 {
+    color: white !important;
+    font-family: 'Sacramento', cursive;   
+    font-size: 5vw !important; 
+    margin-top: 1.6vw !important;
+}
+
+.frame {
+    width: 52vw;
+    margin: auto;
+}
+
+.midinfo {
+    border-style: solid;
+    border-width: 0.2vw;
+    border-color: white;
+    height: 100%;
+    width: 100%;
+    background-color: var(--leveltwo-color);
+}
+
+.plate {
+    background-color: var(--levelfour-color);
+}
+
+.info-plate-c {
+    background-color: var(--leveltwo-color);
+    display: inline-block;
+}
+
+.info-plate {
+    height: 100%;
+    width: 100%;
+}
+
+.info-plate-right {
+    width: 100%;
+}
+
+.info-plate-left {
+    width: 100%;
+}
+
+.info-plate-top {
+    height: 100%;
+    float: left;
+}
+
+.info-plate-bottom {
+    height: 100%;
+    float: right;
+}
+
+.butdivside {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    height: 50%;
+    background-color: var(--leveltwo-color);
+    margin: 0%;
+    padding: 5%;
+}
+
+.btn {
+    display: inline-block;
+    border-radius: 0 !important;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5vw !important;
+}
+
+.butdivmiddle {
+    vertical-align: top;
+    display: inline-block;
+    width: 49%;
+    height: 100%;
+    background-color: var(--leveltwo-color);
+    margin: 0%;
+    padding: 3%;
+}
+
 /*
     normal pc size
 */
 
 @media (max-width: 5000px) and (min-width: 1150px){
-
-    h1 {
-        color: white !important;
-        font-family: 'Sacramento', cursive;   
-        font-size: 5vw !important; 
-        margin-top: 1.6vw !important;
-    }
-
-    
-
-    .frame {
-        width: 52vw;
-        margin: auto;
-    }
-
     .first-plate {
         padding: 1%;
         height: 11.375vw;
         width: 39vw;
-        background-color: var(--levelfour-color);
         margin-left: auto;
     }
 
@@ -83,7 +148,6 @@ body {
         float: left;
         height: 24.375vw;
         width: 13vw;
-        background-color: var(--levelfour-color);
         margin: 0;
         padding: 1%;
     }
@@ -93,7 +157,6 @@ body {
         width: 26vw;
         padding: 1%;
         margin: auto;
-        background-color: var(--levelfour-color);
     }
 
     .fourth-plate {
@@ -102,7 +165,6 @@ body {
         height: 24.375vw;
         width: 13vw;
         padding: 1%;
-        background-color: var(--levelfour-color);
         margin: 0;
     }
 
@@ -110,85 +172,28 @@ body {
         padding: 1%;
         height: 11.375vw;
         width: 39vw;
-        background-color: var(--levelfour-color);
     }
 
     .info-plate {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
-        width: 100%;
         padding: 3%;
     }
 
-    .midinfo {
-        border-style: solid;
-        border-width: 0.2vw;
-        border-color: white;
-        height: 100%;
-        width: 100%;
-        background-color: var(--leveltwo-color);
-    }
-
     .info-plate-right {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
         height: 80%;
-        width: 100%;
     }
 
     .info-plate-left {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
         height: 80%;
-        width: 100%;
         margin-top: 40%;
     }
 
     .info-plate-top {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
         width: 85%;
-        float: left;
     }
 
     .info-plate-bottom {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
         width: 85%;
-        float: right;
     }
-
-    .btn {
-        display: inline-block;
-        border-radius: 0 !important;
-        width: 100%;
-        height: 100%;
-        font-size: 1.5vw !important;
-    }
-    
-    .butdivside {
-        vertical-align: top;
-        display: inline-block;
-        width: 100%;
-        height: 50%;
-        background-color: var(--leveltwo-color);
-        margin: 0%;
-        padding: 5%;
-    }
-
-    .butdivmiddle {
-        vertical-align: top;
-        display: inline-block;
-        width: 49%;
-        height: 100%;
-        background-color: var(--leveltwo-color);
-        margin: 0%;
-        padding: 3%;
-    }
-
 }
 
 /*
@@ -196,6 +201,10 @@ body {
 */
 
 @media (max-width: 1150px) and (min-width: 720px){
+    h1 {
+        font-size: 6vw !important; 
+        margin-top: 2.1vw !important;
+    }
     
     h5 {
         font-size: 2vw !important;
@@ -203,21 +212,12 @@ body {
 
     .frame {
         width: 60vw;
-        margin: auto;
-    }
-
-    h1 {
-        color: white !important;
-        font-family: 'Sacramento', cursive;   
-        font-size: 6vw !important; 
-        margin-top: 2.1vw !important;
     }
 
     .first-plate {
         padding: 1%;
         height: 14vw;
         width: 45vw;
-        background-color: var(--levelfour-color);
         margin-left: auto;
     }
 
@@ -226,7 +226,6 @@ body {
         float: left;
         height: 28vw;
         width: 15vw;
-        background-color: var(--levelfour-color);
         margin: 0;
         padding: 1%;
     }
@@ -237,7 +236,6 @@ body {
         width: 30vw;
         padding: 1%;
         margin: auto;
-        background-color: var(--levelfour-color);
     }
 
     .fourth-plate {
@@ -246,7 +244,6 @@ body {
         height: 28vw;
         width: 15vw;
         padding: 1%;
-        background-color: var(--levelfour-color);
         margin: 0;
     }
 
@@ -254,85 +251,28 @@ body {
         padding: 1%;
         height: 14vw;
         width: 45vw;
-        background-color: var(--levelfour-color);
     }
 
     .info-plate {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
-        width: 100%;
         padding: 3%;
     }
 
-    .midinfo {
-        border-style: solid;
-        border-width: 0.2vw;
-        border-color: white;
-        height: 100%;
-        width: 100%;
-        background-color: var(--leveltwo-color);
-    }
-
     .info-plate-right {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
         height: 80%;
-        width: 100%;
     }
 
     .info-plate-left {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
         height: 80%;
         margin-top: 45%;
-        width: 100%;
     }
 
     .info-plate-top {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
         width: 85%;
-        float: left;
     }
 
     .info-plate-bottom {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
-        width: 85%;
-        float: right;
+        width: 85%
     }
-
-    .btn {
-        display: inline-block;
-        border-radius: 0 !important;
-        width: 100%;
-        height: 100%;
-        font-size: 1.5vw !important;
-    }
-    
-    .butdivside {
-        vertical-align: top;
-        display: inline-block;
-        width: 100%;
-        height: 50%;
-        background-color: var(--leveltwo-color);
-        margin: 0%;
-        padding: 5%;
-    }
-
-    .butdivmiddle {
-        vertical-align: top;
-        display: inline-block;
-        width: 49%;
-        height: 100%;
-        background-color: var(--leveltwo-color);
-        margin: 0%;
-        padding: 2%;
-    }
-
 }
 
 /*
@@ -340,133 +280,11 @@ body {
 */
 
 @media (max-width: 720px) and (min-width: 410px) {
-
     h1 {
-        color: white !important;
-        font-family: 'Sacramento', cursive;   
         font-size: 10vw !important; 
         margin-top: 3.2vw !important;
     }
-
-    .customheader {
-        height: 80px;
-    }
-
-    .customfooter {
-        height: 80px;
-    }
-
-    .frame {
-        width: 52vw;
-        margin: auto;
-    }
-
-    .first-plate {
-        margin-top: 2vw !important; 
-        margin-bottom: 2vw !important; 
-        margin: auto;
-        padding: 2%;
-        height: 25vw;
-        width: 100%;
-        background-color: var(--levelfour-color);
-    }
-
-    .second-plate {
-        margin-top: 4vw !important; 
-        margin-bottom: 4vw !important; 
-        height: 25vw;
-        width: 100%;
-        background-color: var(--levelfour-color);
-        padding: 2%;
-        margin: auto;
-    }
-
-    .third-plate {
-        margin-top: 4vw !important; 
-        margin-bottom: 4vw !important; 
-        height: 25vw;
-        width: 100%;
-        margin: auto;
-        padding: 2%;
-        background-color: var(--levelfour-color);
-    }
-
-    .fourth-plate {
-        margin-top: 4vw !important; 
-        margin-bottom: 4vw !important; 
-        height: 25vw;
-        width: 100%;
-        margin: auto;
-        padding: 2%;
-        background-color: var(--levelfour-color);
-    }
-
-    .fifth-plate {
-        margin-top: 4vw !important; 
-        margin-bottom: 4vw !important; 
-        margin: auto;
-        padding: 2%;
-        height: 25vw;
-        width: 100%;
-        background-color: var(--levelfour-color);
-    }
-
-    .info-plate {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-    }
-
-    .midinfo {
-        border-style: solid;
-        border-width: 0.2vw;
-        border-color: white;
-        height: 100%;
-        width: 100%;
-        background-color: var(--leveltwo-color);
-    }
-
-    .info-plate-right {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        padding: 3%;
-    }
-
-    .info-plate-left {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-    }
-
-    .info-plate-top {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        float: left;
-    }
-
-    .info-plate-bottom {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        float: right;
-    }
     
-    .btn {
-        display: inline-block;
-        border-radius: 0 !important;
-        width: 100%;
-        height: 100%;
-        font-size: 3vw !important;
-        text-align: center !important;
-    }
-
     h5 {
         display:inline-block !important; 
         margin-bottom: 0 !important;
@@ -474,53 +292,12 @@ body {
         text-align: center !important;
     }
 
-
-
-    .lucky {
-        font-size: 2vw !important;
-    }
-    
-    .butdivside {
-        vertical-align: top;
-        display: inline-block;
-        width: 49%;
-        height: 100%;
-        background-color: var(--leveltwo-color);
-        margin: 0%;
-        padding: 3%;
-    }
-
-    .butdivmiddle {
-        vertical-align: top;
-        display: inline-block;
-        width: 49%;
-        height: 100%;
-        background-color: var(--leveltwo-color);
-        margin: 0%;
-        padding: 3%;
-    }
-}
-
-@media (max-width: 410px) and (min-width: 0px) {
-
-    h1 {
-        color: white !important;
-        font-family: 'Sacramento', cursive;   
-        font-size: 10vw !important; 
-        margin-top: 3.2vw !important;
-    }
-
     .customheader {
         height: 80px;
     }
 
     .customfooter {
         height: 80px;
-    }
-
-    .frame {
-        width: 52vw;
-        margin: auto;
     }
 
     .first-plate {
@@ -530,7 +307,6 @@ body {
         padding: 2%;
         height: 25vw;
         width: 100%;
-        background-color: var(--levelfour-color);
     }
 
     .second-plate {
@@ -538,7 +314,6 @@ body {
         margin-bottom: 4vw !important; 
         height: 25vw;
         width: 100%;
-        background-color: var(--levelfour-color);
         padding: 2%;
         margin: auto;
     }
@@ -550,7 +325,6 @@ body {
         width: 100%;
         margin: auto;
         padding: 2%;
-        background-color: var(--levelfour-color);
     }
 
     .fourth-plate {
@@ -560,7 +334,6 @@ body {
         width: 100%;
         margin: auto;
         padding: 2%;
-        background-color: var(--levelfour-color);
     }
 
     .fifth-plate {
@@ -570,64 +343,45 @@ body {
         padding: 2%;
         height: 25vw;
         width: 100%;
-        background-color: var(--levelfour-color);
-    }
-
-    .info-plate {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-    }
-
-    .midinfo {
-        border-style: solid;
-        border-width: 0.2vw;
-        border-color: white;
-        height: 100%;
-        width: 100%;
-        background-color: var(--leveltwo-color);
     }
 
     .info-plate-right {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
         height: 100%;
-        width: 100%;
         padding: 3%;
     }
 
     .info-plate-left {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
         height: 100%;
-        width: 100%;
     }
 
     .info-plate-top {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
         width: 100%;
-        float: left;
     }
 
     .info-plate-bottom {
-        background-color: var(--leveltwo-color);
-        display: inline-block;
-        height: 100%;
         width: 100%;
-        float: right;
     }
     
     .btn {
-        display: inline-block;
-        border-radius: 0 !important;
-        width: 100%;
-        height: 100%;
         font-size: 3vw !important;
         text-align: center !important;
-        padding: 0 !important;
+    }
+
+    .lucky {
+        font-size: 2vw !important;
+    }
+    
+    .butdivside {
+        width: 49%;
+        height: 100%;
+        padding: 3%;
+    }
+}
+
+@media (max-width: 410px) and (min-width: 0px) {
+    h1 {
+        font-size: 10vw !important; 
+        margin-top: 3.2vw !important;
     }
 
     h5 {
@@ -637,29 +391,89 @@ body {
         text-align: center !important;
     }
 
+    .customheader {
+        height: 80px;
+    }
 
+    .customfooter {
+        height: 80px;
+    }
+
+    .first-plate {
+        margin-top: 2vw !important; 
+        margin-bottom: 2vw !important; 
+        margin: auto;
+        padding: 2%;
+        height: 25vw;
+        width: 100%;
+    }
+
+    .second-plate {
+        margin-top: 4vw !important; 
+        margin-bottom: 4vw !important; 
+        height: 25vw;
+        width: 100%;
+        padding: 2%;
+        margin: auto;
+    }
+
+    .third-plate {
+        margin-top: 4vw !important; 
+        margin-bottom: 4vw !important; 
+        height: 25vw;
+        width: 100%;
+        margin: auto;
+        padding: 2%;
+    }
+
+    .fourth-plate {
+        margin-top: 4vw !important; 
+        margin-bottom: 4vw !important; 
+        height: 25vw;
+        width: 100%;
+        margin: auto;
+        padding: 2%;
+    }
+
+    .fifth-plate {
+        margin-top: 4vw !important; 
+        margin-bottom: 4vw !important; 
+        margin: auto;
+        padding: 2%;
+        height: 25vw;
+        width: 100%;
+    }
+
+    .info-plate-right {
+        height: 100%;
+        padding: 3%;
+    }
+
+    .info-plate-left {
+        height: 100%;
+    }
+
+    .info-plate-top {
+        width: 100%;
+    }
+
+    .info-plate-bottom {
+        width: 100%;
+    }
+    
+    .btn {
+        font-size: 3vw !important;
+        text-align: center !important;
+        padding: 0 !important;
+    }
 
     .lucky {
         font-size: 2vw !important;
     }
     
     .butdivside {
-        vertical-align: top;
-        display: inline-block;
         width: 49%;
         height: 100%;
-        background-color: var(--leveltwo-color);
-        margin: 0%;
-        padding: 3%;
-    }
-
-    .butdivmiddle {
-        vertical-align: top;
-        display: inline-block;
-        width: 49%;
-        height: 100%;
-        background-color: var(--leveltwo-color);
-        margin: 0%;
         padding: 3%;
     }
 }

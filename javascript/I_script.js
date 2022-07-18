@@ -1,8 +1,8 @@
+$(window).resize(function(){location.reload();})
 var number = Math.floor(Math.random() * 8) + 1
 var image = "/images/"+number+".jpg"
 
 $('.img').css('background-image','url('+image+')');
-
 
 if (window.innerWidth <= 720) {
     
@@ -13,5 +13,4 @@ if (window.innerWidth <= 720) {
     $(".phone-fourth").html("<a href='data.html?topic=movie-alphabetical'><div class='butdivside'><button type='button' class='btn btn-outline-light btn-lg fifth'><h5>Movie</h5></button></div></a><a href='data.html?topic=game-alphabetical'><div class='butdivside'><button type='button' class='btn btn-outline-light btn-lg sixth'><h5>Game</h5></button></div></a>")
 e
 }
-
 $(window).resize(function(){location.reload();})

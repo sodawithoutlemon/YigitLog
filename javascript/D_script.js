@@ -21,13 +21,9 @@ function GetDataAlphabetical(){
                 var template = "<tr><td scope='row' class='head'>"+(i)+"</td><td class='tablename'>"+name+"</td><td class='tablescore'>"+score+"</td><td>"+note+"</td></tr>"
                 $("table").find('tbody').append(template);
             }
-
         }
-
-
-    })
+    });
 }
-
 
 var watching = []
 var unfinished = []
@@ -116,6 +112,4 @@ var number = Math.floor(Math.random() * 8) + 1
 var image = "/images/"+number+".jpg"
 
 $('.img').css('background-image','url('+image+')');
-$(window).resize(function(){location.reload();})
-
-
+$(window).resize(function(){location.reload();});
