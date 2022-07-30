@@ -267,7 +267,7 @@ h1 {
     phone size
 */
 
-@media (max-width: 720px) and (min-width: 410px) {
+@media (max-width: 720px) and (min-width: 0px) {
     h1 {
         font-size: 10vw !important; 
         margin-top: 3.2vw !important;
@@ -275,105 +275,6 @@ h1 {
     
     h5 {
         display:inline-block !important; 
-        margin-bottom: 0 !important;
-        font-size: 3vw !important;
-        text-align: center !important;
-    }
-
-    .customheader {
-        height: 80px;
-    }
-
-    .customfooter {
-        height: 80px;
-    }
-
-    .first-plate {
-        margin-top: 2vw !important; 
-        margin-bottom: 2vw !important; 
-        margin: auto;
-        padding: 2%;
-        height: 25vw;
-        width: 100%;
-    }
-
-    .second-plate {
-        margin-top: 4vw !important; 
-        margin-bottom: 4vw !important; 
-        height: 25vw;
-        width: 100%;
-        padding: 2%;
-        margin: auto;
-    }
-
-    .third-plate {
-        margin-top: 4vw !important; 
-        margin-bottom: 4vw !important; 
-        height: 25vw;
-        width: 100%;
-        margin: auto;
-        padding: 2%;
-    }
-
-    .fourth-plate {
-        margin-top: 4vw !important; 
-        margin-bottom: 4vw !important; 
-        height: 25vw;
-        width: 100%;
-        margin: auto;
-        padding: 2%;
-    }
-
-    .fifth-plate {
-        margin-top: 4vw !important; 
-        margin-bottom: 4vw !important; 
-        margin: auto;
-        padding: 2%;
-        height: 25vw;
-        width: 100%;
-    }
-
-    .info-plate-right {
-        height: 100%;
-        padding: 3%;
-    }
-
-    .info-plate-left {
-        height: 100%;
-    }
-
-    .info-plate-top {
-        width: 100%;
-    }
-
-    .info-plate-bottom {
-        width: 100%;
-    }
-    
-    .btn {
-        font-size: 3vw !important;
-        text-align: center !important;
-    }
-
-    .lucky {
-        font-size: 2vw !important;
-    }
-    
-    .butdivside {
-        width: 49%;
-        height: 100%;
-        padding: 3%;
-    }
-}
-
-@media (max-width: 410px) and (min-width: 0px) {
-    h1 {
-        font-size: 10vw !important; 
-        margin-top: 3.2vw !important;
-    }
-
-    h5 {
-        display: inline-block !important; 
         margin-bottom: 0 !important;
         font-size: 3vw !important;
         text-align: center !important;
