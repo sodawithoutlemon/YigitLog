@@ -64,6 +64,7 @@
 /*
     top-inside
 */
+
 .middleinfo {
     display: inline-block;
     margin-right: 1%;
@@ -94,6 +95,14 @@ h1 {
     border-width: 0.6vw;
     height: 9vw;
     border-color: var(--levelfour-color);
+}
+
+
+#marginnull {
+    font-size: 1.1vw !important;
+    width: fit-content;
+    color: white;
+    margin-bottom: 0px !important;
 }
 
 .btn {

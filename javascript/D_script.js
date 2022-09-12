@@ -4,11 +4,18 @@ var firstletter = topic[0].toUpperCase();
 $(".topic").text(firstletter+topic.slice(1,10))
 var key = apikey
 
+
+function DataGettingBrain() {
+
+}
+
+
 function GetDataAlphabetical(){
     var dataurl = "https://sheets.googleapis.com/v4/spreadsheets/1IvTyuL4NnXcuQ8kCzdiVMWzKtC71bjD9u5IXQ6sWtmo/values/"+topic+"/?key="+key
     axios.get(dataurl).then(function(response){
 
         var data = response.data.values
+
         for (var i = 0; i < data.length; i++){
 
             if(i > 0) {
@@ -26,37 +33,31 @@ function GetDataAlphabetical(){
 }
 
 var watching = []
-var unfinished = []
 var scored = []
+
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+
 
 function GetDataByScore() {
     var databyscoreurl = "https://sheets.googleapis.com/v4/spreadsheets/1IvTyuL4NnXcuQ8kCzdiVMWzKtC71bjD9u5IXQ6sWtmo/values/"+topic+"/?key="+key
     axios.get(databyscoreurl).then(function(response){
         var test = response.data.values
+
+       
+
         for (var i = 0; i < test.length; i++){
             
-            if(i > 0) {
-                if (test[i][1] === "izliyorum") {
-                    watching.push(test[i])
-                }
-                else if (test[i][1] === "okuyorum") {
-                    watching.push(test[i])
-                }
-                else if (test[i][1] === "oynuyorum") {
-                    watching.push(test[i])
-                }
-                else if (test[i][1] === "Nostalji") {
-                    watching.push(test[i])
-                }
-                else if (test[i][1] === "-") {
-                    unfinished.push(test[i])
-                }
-
-                else {
+            if(i > 0) { 
+                if (isNumeric(test[i][1][0])) {
                     var scorestr = test[i][1].split("/")[0]
                     test[i].splice(1, 1)
                     test[i].splice(1,0, scorestr)
-                    scored.push(test[i])
+                    scored.push(test[i])     
+                } else {
+                    watching.push(test[i])
                 }
             }
         }
@@ -66,20 +67,73 @@ function GetDataByScore() {
                 return a[1] - b[1];
             }
         ).reverse();
-
         scored = scored.concat(watching)
-        scored = scored.concat(unfinished)
+        
+        var onlynamearray = []
 
         for (var i = 0; i < scored.length; i++){
-            console.log(scored[i])
+            onlynamearray.push(scored[i][0])
+        }
+        let findDuplicates = arr => arr.filter((item, index) => arr.indexOf(item) != index)
+        var nameswithseason = findDuplicates(onlynamearray)
+        var pickedarray = []
+        for (var i = 0; i < scored.length; i++){
+
             var sname = scored[i][0]
             var sscore = scored[i][1]
             var snote = scored[i][2]
+
             if (snote === undefined){
                 snote = " "
             }
-            var template = "<tr><td scope='row' class='head'>"+(i+1)+"</td><td class='tablename'>"+sname+"</td><td class='tablescore'>"+sscore+"</td><td>"+snote+"</td></tr>"
-            $("table").find('tbody').append(template);
+            
+            if (!pickedarray.includes(sname)) {
+                if (nameswithseason.includes(sname)) {
+                    
+                    var dropdownitempatern = ""
+                    multiseasonthing = []
+                    function locator(name) {
+                        for (var j = 0; j < test.length; j++) {
+                            if (name == test[j][0]) {
+                                multiseasonthing.push(test[j])
+                                var modstring = "Season "+test[j][3]+":     "+test[j][1]+"/10"
+                                var item = '<a class="dropdown-item" href="#">'+modstring+'</a>'
+                                dropdownitempatern += item
+                            }
+                        }
+                    }
+                    locator(sname)
+
+                    var score = 0
+                    for (var j = 0; j < multiseasonthing.length; j++) {
+                        score += parseInt(multiseasonthing[j][1])
+                    }
+                    console.log(score)
+                    score = score / multiseasonthing.length
+
+                    if (isNumeric(score)) {
+                        sscore = score + "/10"
+                    }
+
+                    snote = multiseasonthing[0][2]
+
+
+                    var namewithdropdownbutton = '<div class="dropdown"><button id="marginnull" class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+sname+'</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+dropdownitempatern+'</div></div>'
+                    var template = "<tr><td scope='row' class='head'>"+(i+1)+"</td><td class='tablename'>"+namewithdropdownbutton+"</td><td class='tablescore'>"+sscore+"</td><td>"+snote+"</td></tr>"
+                    pickedarray.push(sname)
+                }
+                
+                else {
+
+                    if (isNumeric(sscore)) {
+                        sscore = sscore + "/10"
+                    }
+
+                    var template = "<tr><td scope='row' class='head'>"+(i+1)+"</td><td class='tablename'>"+sname+"</td><td class='tablescore'>"+sscore+"</td><td>"+snote+"</td></tr>"
+                    pickedarray.push(sname)
+                }
+                $("table").find('tbody').append(template);
+            }
         }
 
     });

@@ -13,4 +13,9 @@ if (window.innerWidth <= 720) {
     $(".phone-fourth").html("<a href='data.html?topic=movie-alphabetical'><div class='butdivside'><button type='button' class='btn btn-outline-light btn-lg fifth'><h5>Movie</h5></button></div></a><a href='data.html?topic=game-alphabetical'><div class='butdivside'><button type='button' class='btn btn-outline-light btn-lg sixth'><h5>Game</h5></button></div></a>")
 
 }
-$(window).resize(function(){location.reload();})
+
+if (window.innerWidth > 720) {
+    $(window).resize(function(){
+        location.reload();
+    })
+}
