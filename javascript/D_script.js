@@ -4,139 +4,201 @@ var firstletter = topic[0].toUpperCase();
 $(".topic").text(firstletter+topic.slice(1,10))
 var key = apikey
 
-
-function DataGettingBrain() {
-
-}
-
-
-function GetDataAlphabetical(){
-    var dataurl = "https://sheets.googleapis.com/v4/spreadsheets/1IvTyuL4NnXcuQ8kCzdiVMWzKtC71bjD9u5IXQ6sWtmo/values/"+topic+"/?key="+key
-    axios.get(dataurl).then(function(response){
-
-        var data = response.data.values
-
-        for (var i = 0; i < data.length; i++){
-
-            if(i > 0) {
-                var name = data[i][0]
-                var score = data[i][1]
-                var note = data[i][2]
-                if (note === undefined){
-                    note = " "
-                } 
-                var template = "<tr><td scope='row' class='head'>"+(i)+"</td><td class='tablename'>"+name+"</td><td class='tablescore'>"+score+"</td><td>"+note+"</td></tr>"
-                $("table").find('tbody').append(template);
-            }
-        }
-    });
-}
-
-var watching = []
-var scored = []
-
 function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
+numberforalphordering = 1
+var numberfororder = 1
 
+var alphabeticalarray = []
+var arraywithscores = []
+var arraywithother = []
+var scored = []
 
-
-function GetDataByScore() {
+async function TemplateMaker() {
     var databyscoreurl = "https://sheets.googleapis.com/v4/spreadsheets/1IvTyuL4NnXcuQ8kCzdiVMWzKtC71bjD9u5IXQ6sWtmo/values/"+topic+"/?key="+key
-    axios.get(databyscoreurl).then(function(response){
-        var test = response.data.values
 
-       
+    const test = await axios.get(databyscoreurl).then(function(response){
+        return response.data.values
+    });
 
-        for (var i = 0; i < test.length; i++){
-            
-            if(i > 0) { 
-                if (isNumeric(test[i][1][0])) {
-                    var scorestr = test[i][1].split("/")[0]
-                    test[i].splice(1, 1)
-                    test[i].splice(1,0, scorestr)
-                    scored.push(test[i])     
-                } else {
-                    watching.push(test[i])
-                }
-            }
+    test.shift()
+    scored = test
+
+    var onlynamearray = []
+    var pickedarray = []
+
+    for (var i = 0; i < scored.length; i++){
+        onlynamearray.push(scored[i][0])
+    }
+    let findDuplicates = arr => arr.filter((item, index) => arr.indexOf(item) != index)
+    var nameswithseason = findDuplicates(onlynamearray)
+    
+    
+    for (var i = 0; i < scored.length; i++){
+
+        var sname = scored[i][0]
+        var sscore = scored[i][1]
+        var snote = scored[i][2]
+
+        if (snote === undefined){
+            snote = " "
         }
-
-        scored.sort(
-            function(a,b) {
-                return a[1] - b[1];
-            }
-        ).reverse();
-        scored = scored.concat(watching)
         
-        var onlynamearray = []
+        if (!pickedarray.includes(sname)) {
 
-        for (var i = 0; i < scored.length; i++){
-            onlynamearray.push(scored[i][0])
-        }
-        let findDuplicates = arr => arr.filter((item, index) => arr.indexOf(item) != index)
-        var nameswithseason = findDuplicates(onlynamearray)
-        var pickedarray = []
-        for (var i = 0; i < scored.length; i++){
-
-            var sname = scored[i][0]
-            var sscore = scored[i][1]
-            var snote = scored[i][2]
-
-            if (snote === undefined){
-                snote = " "
-            }
-            
-            if (!pickedarray.includes(sname)) {
-                if (nameswithseason.includes(sname)) {
-                    
-                    var dropdownitempatern = ""
-                    multiseasonthing = []
-                    function locator(name) {
-                        for (var j = 0; j < test.length; j++) {
-                            if (name == test[j][0]) {
-                                multiseasonthing.push(test[j])
-                                var modstring = "Season "+test[j][3]+":     "+test[j][1]+"/10"
-                                var item = '<a class="dropdown-item" href="#">'+modstring+'</a>'
-                                dropdownitempatern += item
+            if (nameswithseason.includes(sname)) {
+                
+                var dropdownitempatern = ""
+                multiseasonthing = []
+                function locator(name) {
+                    for (var j = 0; j < test.length; j++) {
+                        if (name == test[j][0]) {
+                            multiseasonthing.push(test[j])
+                            if (isNumeric(test[j][3])) {
+                                var modstring = "Season "+test[j][3]+": 󠀠󠀠 󠀠 󠀠 󠀠"+test[j][1]+" 󠀠 󠀠 󠀠 󠀠"+test[j][2]
+                            } else {
+                                var modstring = " 󠀠 󠀠 󠀠 󠀠"+test[j][3]+": 󠀠󠀠 󠀠 󠀠 󠀠"+test[j][1]+" 󠀠 󠀠 󠀠 󠀠"+test[j][2]  
                             }
+                            var item = '<a class="dropdown-item">'+modstring+'</a>'
+                            dropdownitempatern += item
                         }
                     }
-                    locator(sname)
-
-                    var score = 0
-                    for (var j = 0; j < multiseasonthing.length; j++) {
-                        score += parseInt(multiseasonthing[j][1])
+                }
+                locator(sname)
+                
+                var score = 0
+                var len = multiseasonthing.length
+                for (var j = 0; j < multiseasonthing.length; j++) {
+                    if(isNumeric(multiseasonthing[j][1].split("/")[0])) {
+                        score += parseInt(multiseasonthing[j][1].split("/")[0])    
+                    } else {
+                        len -= 1
                     }
-                    console.log(score)
-                    score = score / multiseasonthing.length
+                }
+                score = score / len
 
-                    if (isNumeric(score)) {
-                        sscore = score + "/10"
+                if (isNumeric(score)) {
+
+                    var te = String(score)
+
+                    try {
+                        te = te.slice(0,3)
                     }
+                    catch(err) {}
 
-                    snote = multiseasonthing[0][2]
+                    dictforscoreing = {
+                        title: sname,
+                        score: te,
+                        note: snote,
+                        isdd: true,
+                        patern: dropdownitempatern 
+                    }
+                    alphabeticalarray.push(dictforscoreing)    
+                    arraywithscores.push(dictforscoreing)
 
+                    sscore = te + "/10"
+                }
+                snote = multiseasonthing[0][4]
+                pickedarray.push(sname)
+            }
+            
+            else {
 
-                    var namewithdropdownbutton = '<div class="dropdown"><button id="marginnull" class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+sname+'</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+dropdownitempatern+'</div></div>'
-                    var template = "<tr><td scope='row' class='head'>"+(i+1)+"</td><td class='tablename'>"+namewithdropdownbutton+"</td><td class='tablescore'>"+sscore+"</td><td>"+snote+"</td></tr>"
-                    pickedarray.push(sname)
+                if (isNumeric(sscore.split("/")[0])) {
+                    dictforscoreing = {
+                        title: sname,
+                        score: sscore.split("/")[0],
+                        isdd: false,
+                        note: snote
+                    }
+                    alphabeticalarray.push(dictforscoreing)
+                    arraywithscores.push(dictforscoreing)
+                } else {
+                    dictforscoreing = {
+                        title: sname,
+                        isdd: false,
+                        score: sscore, 
+                        note: snote
+                    }
+                    alphabeticalarray.push(dictforscoreing)
+                    arraywithother.push(dictforscoreing)
+
                 }
                 
-                else {
-
-                    if (isNumeric(sscore)) {
-                        sscore = sscore + "/10"
-                    }
-
-                    var template = "<tr><td scope='row' class='head'>"+(i+1)+"</td><td class='tablename'>"+sname+"</td><td class='tablescore'>"+sscore+"</td><td>"+snote+"</td></tr>"
-                    pickedarray.push(sname)
+                if (isNumeric(sscore)) {
+                    sscore = sscore + "/10"
                 }
-                $("table").find('tbody').append(template);
+
+                pickedarray.push(sname)
             }
+            
         }
 
-    });
+    }
+    
+}
+
+async function GetDataAlphabetical(){
+    await TemplateMaker()
+    for (var i = 0; i < alphabeticalarray.length; i++){
+
+        if (isNumeric(alphabeticalarray[i]["score"])){
+            var writtenscore = alphabeticalarray[i]["score"] + "/10"
+        } else {
+            var writtenscore = alphabeticalarray[i]["score"]
+        }
+
+        if (alphabeticalarray[i]["isdd"] === true) {
+            var namewithdropdownbutton = '<div class="dropdown"><button id="marginnull" class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+alphabeticalarray[i]["title"]+'</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+alphabeticalarray[i]["patern"]+'</div></div>'
+
+            var template = "<tr><td scope='row' class='head'>"+numberforalphordering+"</td></td><td class='tablename'>"+namewithdropdownbutton+"</td><td class='tablescore'>"+writtenscore+"</td><td>"+alphabeticalarray[i]["note"]+"</td></tr>"
+
+            $("table").find('tbody').append(template);
+
+        } else {
+            var template = "<tr><td scope='row' class='head'>"+numberforalphordering+"</td><td class='tablename'>"+alphabeticalarray[i]["title"]+"</td><td class='tablescore'>"+writtenscore+"</td><td>"+alphabeticalarray[i]["note"]+"</td></tr>"
+            
+            $("table").find('tbody').append(template);
+        }
+        numberforalphordering += 1
+    }
+}
+
+async function GetDataByScore() {
+    await TemplateMaker()
+    
+    var orderedarray = []
+
+    arraywithscores.sort(
+        function(a,b) {
+            return parseFloat(a["score"]) - parseFloat(b["score"]);
+        }
+    ).reverse();
+
+    orderedarray = arraywithscores.concat(arraywithother)
+
+    for (var i = 0; i < orderedarray.length; i++){
+
+        if (isNumeric(orderedarray[i]["score"])){
+            var writtenscore = orderedarray[i]["score"] + "/10"
+        } else {
+            var writtenscore = orderedarray[i]["score"]
+        }
+
+        if (orderedarray[i]["isdd"] === true) {
+
+            var namewithdropdownbutton = '<div class="dropdown"><button id="marginnull" class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+orderedarray[i]["title"]+'</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+orderedarray[i]["patern"]+'</div></div>'
+            var template = "<tr><td scope='row' class='head'>"+numberfororder+"</td></td><td class='tablename'>"+namewithdropdownbutton+"</td><td class='tablescore'>"+writtenscore+"</td><td>"+orderedarray[i]["note"]+"</td></tr>"
+            $("table").find('tbody').append(template);
+
+        } else {
+            var template = "<tr><td scope='row' class='head'>"+numberfororder+"</td><td class='tablename'>"+orderedarray[i]["title"]+"</td><td class='tablescore'>"+writtenscore+"</td><td>"+orderedarray[i]["note"]+"</td></tr>"
+            $("table").find('tbody').append(template);
+        }
+        numberfororder += 1
+    }
+
 }
 
 if (order === "alphabetical") {
