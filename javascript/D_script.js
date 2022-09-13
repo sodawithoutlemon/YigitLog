@@ -228,4 +228,10 @@ var number = Math.floor(Math.random() * 8) + 1
 var image = "/images/"+number+".jpg"
 
 $('.img').css('background-image','url('+image+')');
-$(window).resize(function(){location.reload();});
+
+
+if (window.innerWidth > 720) {
+    $(window).resize(function(){
+        location.reload();
+    })
+}
