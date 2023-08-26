@@ -4,6 +4,7 @@ var firstletter = topic[0].toUpperCase();
 $(".topic").text(firstletter+topic.slice(1,10))
 var key = apikey
 
+
 function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
