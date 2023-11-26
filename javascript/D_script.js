@@ -26,6 +26,13 @@ async function TemplateMaker() {
     test.shift()
     scored = test
 
+    for (var i =0; i<scored.length; i++){
+        if(scored[i][2] == ":D"){
+            scored.splice(i,1)
+            i--
+        }
+    }
+
     var onlynamearray = []
     var pickedarray = []
 
