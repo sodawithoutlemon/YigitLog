@@ -195,6 +195,7 @@ h1 {
     }
     
     h5 {
+
         font-size: 2vw !important;
     }
 
@@ -266,6 +267,11 @@ h1 {
 /*
     phone size
 */
+
+h5 {
+    margin-left: 5%;
+    margin-right: 5%;
+}
 
 @media (max-width: 720px) and (min-width: 0px) {
     h1 {
