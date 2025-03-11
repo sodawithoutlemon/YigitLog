@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Kod Yönlendirme</title>
+    <script>
+        window.onload = function () {
+            var userAgent = navigator.userAgent.toLowerCase();
+            if (userAgent.includes("iphone") || userAgent.includes("ipad")) {
+                window.location.href = "https://apps.apple.com/us/app/sorula-test-deneme-%C3%A7%C3%B6z%C3%BCm/id6740641580";
+            } else if (userAgent.includes("android")) {
+                window.location.href = "https://play.google.com/store/apps/details?id=com.ay.sorulaquiztest";
+            } else {
+                window.location.href = "https://play.google.com/store/apps/details?id=com.ay.sorulaquiztest"; // Diğer cihazlar için
+            }
+        };
+    </script>
+</head>
+<body>
+    <p>Yönlendiriliyorsunuz...</p>
+</body>
+</html>
